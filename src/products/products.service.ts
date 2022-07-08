@@ -4,7 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ProductPatchDto } from './dto/product-patch.dto';
+import { ProductPatchDTO } from './dto/product-patch.dto';
 import { Product } from './interfaces/product.interface';
 
 @Injectable()
@@ -58,7 +58,7 @@ export class ProductsService {
     });
   }
 
-  patch(id: number, body: ProductPatchDto) {
+  patch(id: number, body: ProductPatchDTO) {
     const previousProduct = this.getId(id);
     const product: Product = {
       ...previousProduct,

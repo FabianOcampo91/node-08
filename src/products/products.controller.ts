@@ -11,7 +11,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ProductPatchDto } from './dto/product-patch.dto';
+import { ProductPatchDTO } from './dto/product-patch.dto';
 import { ProductDTO } from './dto/product.dto';
 import { Product } from './interfaces/product.interface';
 import { ProductsService } from './products.service';
@@ -31,8 +31,8 @@ export class ProductsController {
   }
 
   @Post()
-  createProduct(@Body() productDto: ProductDTO) {
-    this.productsService.insert(productDto);
+  createProduct(@Body() productDTO: ProductDTO) {
+    this.productsService.insert(productDTO);
   }
 
   @Put(':id')
@@ -50,7 +50,7 @@ export class ProductsController {
   @Patch(':id')
   async patch(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: ProductPatchDto,
+    @Body() body: ProductPatchDTO,
   ) {
     return this.productsService.patch(id, body);
   }

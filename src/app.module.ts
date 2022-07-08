@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsController } from './products/products.controller';
 import { CustomersController } from './customers/customers.controller';
-import { UsersController } from './controllers/users/users.controller';
 import { ProductsService } from './products/products.service';
-import { ProductsModule } from './products/products.module';
 import { TagsModule } from './tags/tags.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductsModule } from './products/products.module';
+import { Product } from './products/entities/product.entity';
 
 @Module({
   imports: [
@@ -17,17 +18,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'mi_usuario',
-      password: 'secret',
+      username: 'root',
+      password: 'root',
       database: 'nestdb',
+      retryDelay: 3000,
+      autoLoadEntities: true,
+      entities: [Product],
+      synchronize: true,
     }),
   ],
-  controllers: [
-    AppController,
-    ProductsController,
-    CustomersController,
-    UsersController,
-  ],
+  controllers: [AppController, ProductsController, CustomersController],
   providers: [AppService, ProductsService],
 })
 export class AppModule {}
