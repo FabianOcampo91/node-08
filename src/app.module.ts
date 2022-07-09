@@ -9,6 +9,7 @@ import { ProductsService } from './products/products.service';
 import { TagsModule } from './tags/tags.module';
 import { ProductsModule } from './products/products.module';
 import { Product } from './products/entities/product.entity';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { Product } from './products/entities/product.entity';
       entities: [Product],
       synchronize: true,
     }),
+    ReviewsModule,
   ],
   controllers: [AppController, ProductsController, CustomersController],
   providers: [AppService, ProductsService],
