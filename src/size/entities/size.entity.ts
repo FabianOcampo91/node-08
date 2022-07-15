@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Product } from '../../products/entities/product.entity';
+import { Product } from 'src/products/entities/product.entity';
 
-@Entity('sizes')
+@Entity()
 export class Size {
   @PrimaryGeneratedColumn()
   id: number;
