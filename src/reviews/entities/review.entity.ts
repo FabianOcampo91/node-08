@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Product } from '../../products/entities/product.entity';
 
 @Entity()
@@ -9,6 +9,6 @@ export class Review {
   @Column()
   description: string;
 
-  @OneToMany(() => Product, (product) => product.reviews)
+  @ManyToOne(() => Product, (product) => product.reviews)
   product: Product;
 }
